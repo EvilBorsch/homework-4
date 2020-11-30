@@ -3,7 +3,7 @@ from steps.ContactsSteps import ContactsSteps
 
 
 class ContactsPage(Page):
-    PATH = 'contacts'
+    PATH = "contacts"
 
     def open_add_phone_popup(self) -> None:
         contacts_page = ContactsSteps(self.driver)
@@ -16,11 +16,13 @@ class ContactsPage(Page):
         return contacts_page.is_add_phone_popup_title_visible()
 
     def is_add_phone_popup_close(self) -> bool:
+
         contacts_page = ContactsSteps(self.driver)
 
         return contacts_page.is_add_phone_popup_title_close()
 
     def is_add_email_popup_open(self) -> bool:
+
         contacts_page = ContactsSteps(self.driver)
 
         return contacts_page.is_add_email_popup_title_visible()
@@ -31,6 +33,7 @@ class ContactsPage(Page):
         contacts_page.click_add_email_button()
 
     def add_backup_email(self, email) -> None:
+
         contacts_page = ContactsSteps(self.driver)
 
         contacts_page.set_email_input(email)
@@ -66,3 +69,4 @@ class ContactsPage(Page):
     def cancel_phone_popup(self) -> None:
         contacts_steps = ContactsSteps(self.driver)
         contacts_steps.click_cancel_popup_button()
+

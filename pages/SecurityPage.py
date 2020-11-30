@@ -3,7 +3,7 @@ from steps.SecuritySteps import SecuritySteps
 
 
 class SecurityPage(Page):
-    PATH = 'security'
+    PATH = "security"
 
     def click_devices_link(self):
         security_steps = SecuritySteps(self.driver)
@@ -48,6 +48,7 @@ class SecurityPage(Page):
     def is_keys_page_load(self) -> bool:
         security_steps = SecuritySteps(self.driver)
         return security_steps.is_url_equal('account.mail.ru/security/authentication/keys')
+
 
     def is_2fact_page_load(self) -> bool:
         security_steps = SecuritySteps(self.driver)

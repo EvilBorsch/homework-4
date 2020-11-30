@@ -23,6 +23,7 @@ class PasswordPopupSteps(BaseSteps):
     old_password_input_visibility_elem = '//*[@data-test-id="old-password"]//*[@data-test-id="toggle-password-mask"]'
 
     password_security_element = '//*[@data-test-id="password-change-tooltip"]'
+
     generate_link = '//*[@data-test-id="generate-password"]'
 
     change_password_popup = '//*[@data-test-id="password-change-panel"]'
@@ -38,23 +39,36 @@ class PasswordPopupSteps(BaseSteps):
     def is_popup_invisible(self):
         return self.wait_until_and_check_invisibility_of_element(self.change_password_popup)
 
+
     def set_old_password_value(self, password):
-        self.wait_until_and_get_elem_by_xpath(self.current_password_input).send_keys(password)
+        self.wait_until_and_get_elem_by_xpath(self.current_password_input).send_keys(
+            password
+        )
 
     def set_new_password_value(self, password):
-        self.wait_until_and_get_elem_by_xpath(self.new_password_input).send_keys(password)
+        self.wait_until_and_get_elem_by_xpath(self.new_password_input).send_keys(
+            password
+        )
 
     def set_repeat_password_value(self, password):
-        self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).send_keys(password)
+        self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).send_keys(
+            password
+        )
 
     def get_old_password_value(self):
-        self.wait_until_and_get_elem_by_xpath(self.current_password_input).get_attribute('value')
+        self.wait_until_and_get_elem_by_xpath(
+            self.current_password_input
+        ).get_attribute("value")
 
     def get_new_password_value(self):
-        self.wait_until_and_get_elem_by_xpath(self.new_password_input).get_attribute('value')
+        self.wait_until_and_get_elem_by_xpath(self.new_password_input).get_attribute(
+            "value"
+        )
 
     def get_repeat_password_value(self):
-        self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).get_attribute('value')
+        self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).get_attribute(
+            "value"
+        )
 
     def submit_change_password(self):
         self.wait_until_and_get_elem_by_xpath(self.change_password_button).click()
@@ -66,19 +80,29 @@ class PasswordPopupSteps(BaseSteps):
         self.wait_until_and_get_elem_by_xpath(self.close_password_button).click()
 
     def toggle_new_password_visibility(self):
-        self.wait_until_and_get_elem_by_xpath(self.new_password_input_visibility_elem).click()
+        self.wait_until_and_get_elem_by_xpath(
+            self.new_password_input_visibility_elem
+        ).click()
 
     def toggle_old_password_visibility(self):
-        self.wait_until_and_get_elem_by_xpath(self.old_password_input_visibility_elem).click()
+        self.wait_until_and_get_elem_by_xpath(
+            self.old_password_input_visibility_elem
+        ).click()
 
     def get_current_password_input_type(self):
-        return self.wait_until_and_get_elem_by_xpath(self.current_password_input).get_attribute('type')
+        return self.wait_until_and_get_elem_by_xpath(
+            self.current_password_input
+        ).get_attribute("type")
 
     def get_new_password_input_type(self):
-        return self.wait_until_and_get_elem_by_xpath(self.new_password_input).get_attribute('type')
+        return self.wait_until_and_get_elem_by_xpath(
+            self.new_password_input
+        ).get_attribute("type")
 
     def get_repeat_password_input_type(self):
-        return self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).get_attribute('type')
+        return self.wait_until_and_get_elem_by_xpath(
+            self.repeat_password_input
+        ).get_attribute("type")
 
     def is_current_password_invalid(self):
         return not (self.wait_until_and_get_elem_by_xpath(self.current_password_error_element) is None)
@@ -89,8 +113,12 @@ class PasswordPopupSteps(BaseSteps):
     def is_new_password_invalid(self):
         return not (self.wait_until_and_get_elem_by_xpath(self.new_password_error_element) is None)
 
+
     def is_repeat_password_invalid(self):
-        return not (self.wait_until_and_get_elem_by_xpath(self.repeat_password_error_element) is None)
+        return not (
+            self.wait_until_and_get_elem_by_xpath(self.repeat_password_error_element)
+            is None
+        )
 
     def focus_new_password_input(self):
         self.wait_until_and_get_elem_by_xpath(self.new_password_input).click()
@@ -98,14 +126,15 @@ class PasswordPopupSteps(BaseSteps):
     def get_new_password_security(self):
         return self.wait_until_and_get_elem_by_xpath(self.password_security_element).get_attribute('data-tooltip-type')
 
+
     def clean_old_password(self):
-        self.wait_until_and_get_elem_by_xpath(self.current_password_input).send_keys('')
+        self.wait_until_and_get_elem_by_xpath(self.current_password_input).send_keys("")
 
     def clean_new_password(self):
-        self.wait_until_and_get_elem_by_xpath(self.new_password_input).send_keys('')
+        self.wait_until_and_get_elem_by_xpath(self.new_password_input).send_keys("")
 
     def clean_repeat_password(self):
-        self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).send_keys('')
+        self.wait_until_and_get_elem_by_xpath(self.repeat_password_input).send_keys("")
 
     def click_generate_link(self):
         self.wait_until_and_get_elem_by_xpath(self.generate_link).click()

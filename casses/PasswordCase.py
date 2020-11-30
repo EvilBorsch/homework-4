@@ -8,16 +8,15 @@ from pages.PasswordPopup import PasswordPopup
 
 
 class PasswordTest(unittest.TestCase):
-
     def setUp(self) -> None:
-        browser = os.environ.get('BROWSER', 'CHROME')
+        browser = os.environ.get("BROWSER", "CHROME")
         self.driver = Remote(
-            command_executor='http://127.0.0.1:4444/wd/hub',
-            desired_capabilities=getattr(DesiredCapabilities, browser).copy()
+            command_executor="http://127.0.0.1:4444/wd/hub",
+            desired_capabilities=getattr(DesiredCapabilities, browser).copy(),
         )
 
-        LOGIN = os.environ['LOGIN']
-        PASSWORD = os.environ['PASSWORD']
+        LOGIN = os.environ["LOGIN"]
+        PASSWORD = os.environ["PASSWORD"]
         self.password = PASSWORD
         self.login = LOGIN
 
@@ -41,6 +40,7 @@ class PasswordTest(unittest.TestCase):
     def test_change_password(self) -> None:
         NEW_PASSWORD = '12893490278kek'
 
+
         self.page.change_password(self.password, NEW_PASSWORD)
         changed = self.page.is_password_changed()
         self.page.open()
@@ -55,11 +55,14 @@ class PasswordTest(unittest.TestCase):
         self.page.send_form_with_uncorrect_repeat(NEW_PASSWORD, self.password)
         self.assertTrue(self.page.is_repeat_password_equal())
 
+
     def test_generate_password(self) -> None:
         self.page.generate_password()
         # self.assertTrue(self.page.get_new_password_security() == "success")
 
-        self.assertEqual(self.page.get_repeat_password_value(), self.page.get_new_password_value())
+        self.assertEqual(
+            self.page.get_repeat_password_value(), self.page.get_new_password_value()
+        )
 
     def test_long_new_password(self) -> None:
         self.page.set_new_password("12345678aB12345678aB12345678aB12345678aB1")
@@ -72,6 +75,7 @@ class PasswordTest(unittest.TestCase):
     def test_small_new_password(self) -> None:
         self.page.set_new_password("aa12A")
         self.assertTrue(self.page.check_password_security_value_equal('error'))
+
 
     def test_close_popup(self) -> None:
         self.page.close_popup()
@@ -89,7 +93,9 @@ class PasswordTest(unittest.TestCase):
 
         is_success = self.page.is_new_password_visible() and self.page.is_old_password_visibile()
 
+
         self.page.change_new_password_visibility()
         self.page.change_old_password_visibility()
 
         self.assertTrue(not (self.page.is_new_password_visible() or self.page.is_old_password_visibile()) and is_success)
+
