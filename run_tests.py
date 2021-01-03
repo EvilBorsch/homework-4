@@ -21,7 +21,6 @@ if __name__ == "__main__":
         (
             unittest.makeSuite(PersonalDataTests),
             unittest.makeSuite(MainPageTests),
-
             unittest.makeSuite(FoldersTestSecond),
             unittest.makeSuite(PasswordTest),
             unittest.makeSuite(ContactsTest),

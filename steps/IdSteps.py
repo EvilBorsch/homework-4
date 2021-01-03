@@ -45,16 +45,6 @@ class PersonaInfoSteps(BaseSteps):
         splited = text.split(" ")
         return splited[0], splited[1]
 
-    def get_name_surname_from_left_bar(self) -> (str, str):
-        """
-        :return: Получает имя и фамилию из бокового бара
-        """
-        text = str(
-            self.wait_until_and_get_elem_by_xpath(self.name_surname_left_bar_path).text
-        )
-        splited = text.split(" ")
-        return splited[0], splited[1]
-
     def click_add_reserve_email(self):
         """
         :return: Текст хедера в pop up добавления почты
@@ -93,7 +83,7 @@ class PersonaInfoSteps(BaseSteps):
         self.wait_until_and_get_elem_by_xpath(self.reserve_email_input).clear()
 
     def check_if_deleted(self) -> bool:
-        text = self.wait_until_and_get_elem_by_xpath(self.delete_header).text
+        text = self.wait_small_time_and_get_elem_by_xpath(self.delete_header).text
         return text == "Резервная почта удалена"
 
     def close_pop_up(self):

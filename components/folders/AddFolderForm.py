@@ -1,7 +1,7 @@
 from steps.BaseSteps import BaseSteps
-from components.folders.folder import Folder
-from components.folders.attachment_select import AttachmentSelect
-from components.folders.password_from import PasswordForm
+from components.folders.Folder import Folder
+from components.folders.AttachmentSelect import AttachmentSelect
+from components.folders.PasswordFrom import PasswordForm
 
 
 class AddFolderForm(BaseSteps):
@@ -13,7 +13,7 @@ class AddFolderForm(BaseSteps):
     CREATE_FOLDER_BUTTON = '//button[@data-test-id="submit"]'
     CANCEL_CREATE_FOLDER_BUTTON = '//button[@data-test-id="cancel"]'
     CLOSE_CREATE_FOLDER_BUTTON = '//div[@data-test-id="cross"]'
-    EMPTY_FOLDER_NAME_ERROR = '//span[@data-test-id="emptyFolderName"]'
+    EMPTY_FOLDER_NAME_ERROR = '//small[@data-test-id="emptyFolderName"]'
     FORM_DIV = '//div[@data-test-id="popup-wrapper"]'
 
     @property
@@ -59,8 +59,7 @@ class AddFolderForm(BaseSteps):
     @property
     def empty_folder_name_error(self):
         return (
-            len(self.driver.find_elements_by_xpath(self.CANCEL_CREATE_FOLDER_BUTTON))
-            != 0
+            len(self.driver.find_elements_by_xpath(self.EMPTY_FOLDER_NAME_ERROR)) != 0
         )
 
     @property

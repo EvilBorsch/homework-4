@@ -3,16 +3,19 @@
 # Запуск
 
 ```
-$ ./grid.sh
+$ sh grid.sh&
 ```
 ```
-$ ./node.sh
+$ sh node.sh&
 ```
 ```
 $ export BROWSER=<имя браузера> ("CHROME", "FIREFOX")
 $ export LOGIN=<логин>
 $ export PASSWORD=<пароль>
-$ python3 ./run_tests.py
+```
+```
+$ pipenv update
+$ pipenv run python run_tests.py
 ```
 
 # Команда (Github)
@@ -29,4 +32,4 @@ $ python3 ./run_tests.py
 - [Антон Елагин](http://jira.bmstu.cloud/browse/QA-843)
 
 # Тесты
-![img](0b2a8996-c38f-42d1-8c6d-c27fcfda6364.jpg)
+![img](https://github.com/EvilBorsch/homework-4/blob/dev/Снимок%20экрана%202020-12-01%20в%2023.45.34.png)
